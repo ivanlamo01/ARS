@@ -1,22 +1,25 @@
 import Link from 'next/link'
+import styles from './modules/Nav.module.css'
 
-const links = [{
+const links = [
+  {
     label: 'Home',
     route: '/'
-  }, {
+  }, 
+  {
     label: 'Log In',
     route: '/login'
   },
-    {
-      label: 'Sign Up',
-      route: '/signUp'
-    }
-  ]
+  {
+    label: 'Sign Up',
+    route: '/signUp'
+  }
+]
 
 export default function Nav() {
     return (
-        <header>
-            <nav>
+        <header className={styles.header}>
+            <nav className={styles.nav}>
                 <ul>
                   {links.map(({ label, route }) => (
                     <li key={route}>
