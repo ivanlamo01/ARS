@@ -1,5 +1,4 @@
-
-
+"use client"
 import {Button, Spinner } from "react-bootstrap"
 
 function ButtonWhitLoading({variant="primary",type="submit",loading,children}){

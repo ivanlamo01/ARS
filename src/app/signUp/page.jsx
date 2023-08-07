@@ -1,19 +1,60 @@
+"use client"
 import  Form from "react-bootstrap/Form"
-import Input from "../components/input";
 import {Container } from "react-bootstrap";
-import Check from '../Components/Check';
-import ButtonWhitLoading from "../components/loadButton";
-
+import React, { useEffect, useState } from "react";
+import { useRouter } from 'next/navigation'
+import { fetchUsers } from "../../../services/userSevices";
+import { useForm } from "react-hook-form";
+import Input from "../../../components/input";
+import check from '../../../components/Check';
+import ButtonWhitLoading from "../../../components/loadButton";
 
 export default function signUp() {
+  const { register, handleSubmit, formState: { errors } } = useForm({mode:"onChange"});
+  const [alert,setAlert] = useState({variant:"",text:""})
+  const[loading, setLoading] = useState(false)
+  const navigate = useRouter()
+  
+ /* useEffect(() => {
+    if(isAuthenticated){
+      setLoading(false)
+      setAlert({variant:"success",text:"Usuario registrado correctamente"})
+      setTimeout(() => {
+        navigate.push("/")}
+        , 2500);}
+    },[isAuthenticated,navigate])
+  */
+ 
+    /*
+  useEffect(() => {
+    if(registerErrors.length > 0){
+      setLoading(false)}},[registerErrors])
+    
+       <div>
+          {
+            registerErrors.map((error,i)=>(
+              <div key={i}>
+                {error}
+              </div>
+            ))
+          }
+        </div>
+    
+    
+      */
+  const onSubmit = handleSubmit(async (values) =>{
+    setLoading(true)
+    signup(values)
+  })
+  
     return (
       <div>
-      <div style={style.separador}>
-          <h1 style={style.h1}>BIENVENIDO/A!</h1>
+      <div >
+          <h1 >BIENVENIDO/A!</h1>
       </div>
-      <Container style={style.container}>
+      <Container >
         <Form 
-          onSubmit={onSubmit}
+          onSubmit= {onSubmit}
           >
           <Input label="Nombre de ususario" autoComplete="new" register={{...register("userName", { required: true })}}/>
             {errors.userName && (
@@ -34,20 +75,11 @@ export default function signUp() {
                 {errors.password?.type === "required" && <span>This field is required</span> }
                 {errors.password?.type === "pattern" && <span>La contraseña debe tener al menos una letra mayuscula, una minuscula, un numero y un caracter especial</span> }
               </div>)}
-          <ButtonWhitLoading variant="primary" type="submit" loading={loading} style={style.button}>
+          <ButtonWhitLoading variant="primary" type="submit" loading={loading}>
             Registrarse
           </ButtonWhitLoading>
-          {alert && <Check {...alert} />}
+          {alert && <check {...alert} />}
         </Form>
-        <div>
-          {
-            registerErrors.map((error,i)=>(
-              <div key={i}>
-                {error}
-              </div>
-            ))
-          }
-        </div>
       </Container>
     </div>
   );

@@ -25,7 +25,7 @@ export default function Nav() {
                     <li key={route}>
                       <Link href={route}>
                         {label}
-                        </Link>
+                      </Link>
                     </li>
                   ))}
                 </ul>

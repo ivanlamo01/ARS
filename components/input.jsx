@@ -1,5 +1,4 @@
-import  Form from 'react-bootstrap/Form'
-
+import  Form from "react-bootstrap/Form"
 function Input({label, type="text",name,placeholder="",register,autoComplete}){
     return(
         <>
