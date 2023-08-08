@@ -1,10 +1,16 @@
+"use client"
 import React, { useState, useContext } from "react";
-import {registerRequest} from "../config/axios"
+import { registerRequest } from "../services/userServices";
 
 export const AuthContext = React.createContext();
 
-const AuthProvider = ({ children }) => {
+export const useAuthContext = () =>{ 
+    const context = useContext(AuthContext);
+    return context
+}
 
+export const AuthProvider = ({ children }) => {
+    
     const [login, setLogin] = useState(
         localStorage.getItem("login") ? true : false
     );
@@ -53,10 +59,3 @@ const AuthProvider = ({ children }) => {
 };
 
 export default AuthProvider;
-export const useAuthContext = () =>{ 
-    const context = useContext(AuthContext);
-    if(!context){
-        throw new Error("useAuth must be within an AuthProvider")
-    }
-    return context
-}

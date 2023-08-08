@@ -8,7 +8,7 @@ const links = [
   }, 
   {
     label: 'Log In',
-    route: '/login'
+    route: '/logIn'
   },
   {
     label: 'Sign Up',

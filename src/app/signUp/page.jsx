@@ -3,10 +3,10 @@ import  Form from "react-bootstrap/Form"
 import {Container } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
-import { fetchUsers } from "../../../services/userSevices";
+import { fetchUsers } from "../../../services/userServices";
 import { useForm } from "react-hook-form";
 import Input from "../../../components/input";
-import check from '../../../components/Check';
+import Check from '../../../components/check';
 import ButtonWhitLoading from "../../../components/loadButton";
 
 export default function signUp() {
@@ -78,7 +78,7 @@ export default function signUp() {
           <ButtonWhitLoading variant="primary" type="submit" loading={loading}>
             Registrarse
           </ButtonWhitLoading>
-          {alert && <check {...alert} />}
+          {alert && <Check {...alert} />}
         </Form>
       </Container>
     </div>
