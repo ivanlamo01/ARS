@@ -1,4 +1,5 @@
 "use client"
+
 import React, { useState, useContext } from "react";
 import { registerRequest } from "../services/userServices";
 
@@ -6,26 +7,24 @@ export const AuthContext = React.createContext();
 
 export const useAuthContext = () =>{ 
     const context = useContext(AuthContext);
+    if(!context) throw new Error("useAuthContext debe estar dentro del proveedor AuthContext")
     return context
 }
 
-export const AuthProvider = ({ children }) => {
-    
+const AuthProvider = ({ children }) => {
     const [login, setLogin] = useState(
         localStorage.getItem("login") ? true : false
     );
     const [user, setUser] = useState(
         JSON.parse(localStorage.getItem("user")) || {}
     );
-
     const [isAuthenticated,setIsAuthenticated] = useState(false)
     
     const [errors,setErrors] = useState([])
     
-    const signup = async (user)=>{
+    const reg = async (user)=>{
         try {
             const res = await registerRequest(user)
-            console.log("🚀 ~ file: Registro.jsx:48 ~ onSubmit ~ res:", res.data)
             setUser(res.data)
             setIsAuthenticated(true)
             setTimeout(() => {
@@ -36,7 +35,6 @@ export const AuthProvider = ({ children }) => {
             setErrors(error.response.data)
         }
     }
-
     const handleLogin = (userInfo ) => {
         localStorage.setItem("login", "true");
         setLogin(true);
@@ -52,7 +50,7 @@ export const AuthProvider = ({ children }) => {
         ;
     };
     return (
-        <AuthContext.Provider value={{ login,setLogin, handleLogin, handleLogout, user,signup, isAuthenticated, errors }}>
+        <AuthContext.Provider value={{ login,setLogin, handleLogin, handleLogout, user,reg, isAuthenticated, errors }}>
             {children}
         </AuthContext.Provider>
     );

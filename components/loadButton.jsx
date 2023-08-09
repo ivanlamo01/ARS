@@ -1,7 +1,7 @@
 "use client"
 import {Button, Spinner } from "react-bootstrap"
 
-function ButtonWhitLoading({variant="primary",type="submit",loading,children}){
+function ButtonWhitLoading({variant,type,loading,children}){
     return(
         <Button type={type} variant={variant} disabled={loading}>
             {loading && <Spinner animation="border" size="sm"/>}

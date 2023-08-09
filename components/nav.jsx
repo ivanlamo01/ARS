@@ -1,5 +1,8 @@
+"use client"
 import Link from 'next/link'
-import styles from './modules/Nav.module.css'
+import styles from "./modules/nav.module.css"
+import {useAuthContext} from '../Context/AuthContext'
+import logo from '../public/bandera.svg'
 
 const links = [
   {
@@ -17,10 +20,13 @@ const links = [
 ]
 
 export default function Nav() {
+  const {login,handleLogout,user} = useAuthContext()
+
     return (
         <header className={styles.header}>
             <nav className={styles.nav}>
                 <ul>
+                  <img src={logo} alt="" />
                   {links.map(({ label, route }) => (
                     <li key={route}>
                       <Link href={route}>

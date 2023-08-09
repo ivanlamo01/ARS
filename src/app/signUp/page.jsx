@@ -1,21 +1,22 @@
 "use client"
 import  Form from "react-bootstrap/Form"
 import {Container } from "react-bootstrap";
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
-import { fetchUsers } from "../../../services/userServices";
 import { useForm } from "react-hook-form";
 import Input from "../../../components/input";
-import Check from '../../../components/check';
+import Check from '../../../components/Check';
 import ButtonWhitLoading from "../../../components/loadButton";
+import {useAuthContext} from "../../../Context/AuthContext"
 
 export default function signUp() {
   const { register, handleSubmit, formState: { errors } } = useForm({mode:"onChange"});
   const [alert,setAlert] = useState({variant:"",text:""})
   const[loading, setLoading] = useState(false)
   const navigate = useRouter()
+  const {reg,isAuthenticated,errors: registerErrors} = useAuthContext();
   
- /* useEffect(() => {
+  useEffect(() => {
     if(isAuthenticated){
       setLoading(false)
       setAlert({variant:"success",text:"Usuario registrado correctamente"})
@@ -23,28 +24,15 @@ export default function signUp() {
         navigate.push("/")}
         , 2500);}
     },[isAuthenticated,navigate])
-  */
+  
  
-    /*
-  useEffect(() => {
-    if(registerErrors.length > 0){
-      setLoading(false)}},[registerErrors])
-    
-       <div>
-          {
-            registerErrors.map((error,i)=>(
-              <div key={i}>
-                {error}
-              </div>
-            ))
-          }
-        </div>
-    
-    
-      */
+    useEffect(() => {
+      if(registerErrors.length > 0){
+        setLoading(false)}},[registerErrors])
+      
   const onSubmit = handleSubmit(async (values) =>{
     setLoading(true)
-    signup(values)
+    reg(values)
   })
   
     return (
@@ -75,6 +63,17 @@ export default function signUp() {
                 {errors.password?.type === "required" && <span>This field is required</span> }
                 {errors.password?.type === "pattern" && <span>La contraseña debe tener al menos una letra mayuscula, una minuscula, un numero y un caracter especial</span> }
               </div>)}
+
+              <div>
+            {
+              registerErrors.map((error,i)=>(
+                <div key={i}>
+                  {error}
+                </div>
+              ))
+            }
+            </div>
+
           <ButtonWhitLoading variant="primary" type="submit" loading={loading}>
             Registrarse
           </ButtonWhitLoading>

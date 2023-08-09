@@ -1,7 +1,10 @@
+
 import Nav from '../../components/nav';
 import '../styles/globals.css'
 import { Inter } from 'next/font/google';
-import {AuthProvider} from "../../context/authContext";
+import AuthProvider from "../../Context/AuthContext";
+import 'bootstrap/dist/css/bootstrap.css'
+import Footer from '../../components/footer';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,13 +18,16 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{metadata.title}</title>
       </head>
       
       <body className={inter.className}>
-        <Nav />
+        
         <AuthProvider>
+        <Nav />
           {children}  
+        <Footer />
         </AuthProvider>
         
       
