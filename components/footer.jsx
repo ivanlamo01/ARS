@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link'
-import styles from './modules/footer.module.css'
+import styles from '../modules/footer.module.css'
 
 
 

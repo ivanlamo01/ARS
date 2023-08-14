@@ -1,0 +1,19 @@
+
+.nav ul{
+    display: flex;
+    list-style: none;
+}
+
+.nav li{
+    padding: 20px;
+
+}
+.nav a{
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: large;
+}
+.img{
+    width: 100px;
+}

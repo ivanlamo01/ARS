@@ -1,8 +1,8 @@
 "use client"
 import Link from 'next/link'
-import styles from "./modules/nav.module.css"
-import {useAuthContext} from '../Context/AuthContext'
-import logo from '../public/bandera.svg'
+import styles from "../modules/nav.module.css"
+import {useAuthContext} from '../Context/AuthContext';
+
 
 const links = [
   {
@@ -26,7 +26,7 @@ export default function Nav() {
         <header className={styles.header}>
             <nav className={styles.nav}>
                 <ul>
-                  <img src={logo} alt="" />
+                <img src="http://www.astillero.gba.gov.ar/imagenes/logo70.png" alt="" className={styles.img}/>
                   {links.map(({ label, route }) => (
                     <li key={route}>
                       <Link href={route}>

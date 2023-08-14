@@ -6,6 +6,7 @@ import AuthProvider from "../../Context/AuthContext";
 import 'bootstrap/dist/css/bootstrap.css'
 import Footer from '../../components/footer';
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -22,7 +23,7 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
       </head>
       
-      <body className={inter.className}>
+      <body className={inter.className} >
         
         <AuthProvider>
         <Nav />

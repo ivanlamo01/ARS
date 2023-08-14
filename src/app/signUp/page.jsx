@@ -63,7 +63,7 @@ export default function signUp() {
                 {errors.password?.type === "required" && <span>This field is required</span> }
                 {errors.password?.type === "pattern" && <span>La contraseña debe tener al menos una letra mayuscula, una minuscula, un numero y un caracter especial</span> }
               </div>)}
-
+              
               <div>
             {
               registerErrors.map((error,i)=>(

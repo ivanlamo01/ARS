@@ -9,34 +9,8 @@ import { useAuthContext } from "../../../Context/AuthContext";
 import {Button, Spinner } from "react-bootstrap";
 import { login } from "../../../services/userServices";
 import { useRouter } from 'next/navigation'
+import style from "../../../modules/login.module.css"
 
-
-const style={
-    separador:{
-        height:"500px",
-        backgroundColor:"#027fbb",
-        display:"flex",
-        justifyContent:"center"
-    },
-    h1:{
-        color:"white",
-        marginTop:"200px",
-        fontSize:"60px",
-        fontWeight:"900"
-    },
-    container:{
-        maxWidth:"370px",
-        marginTop:"50px"
-    },
-    button:{
-        width:"100%",
-        height:"70px",
-        backgroundColor:"#202d56"
-    },
-    label:{
-        color:"#454545",
-    }
-}
 
 function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm({mode:"onChange"});
@@ -68,23 +42,33 @@ function Login() {
     return (
         <>
             <div>
-                <div style={style.separador}>
-                    <h1 style={style.h1}>LOGIN</h1>
-                </div>
-                <Container style={style.container}>
+                <Container className={style.container}>
+                <h1 className={style.h1}>Login</h1>
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                    <Input label="E-mail"  type='email' autoComplete="username"  register={{...register("email", { required: true })}} style={style.label}/>
-                        {errors.email && (
-                            <div>
-                                <span>This field is required</span>
-                            </div>)}
-                    <Input label="Contraseña" type="password" autoComplete="current-password" register={{...register("password", { required: true, minLength:6})}} style={style.label}/>
+                    
+                    <div className={style.input}>
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                            </svg>
+                        </span>
+                        <Input label="E-mail"  type='email' autoComplete="username"  register={{...register("email", { required: true })}} className={style.label}/>
+                            {errors.email && (
+                                <div>
+                                    <span>This field is required</span>
+                                </div>)}
+                    </div>
+                    
+                            
+                            
+                    <Input label="Contraseña" type="password" autoComplete="current-password" register={{...register("password", { required: true, minLength:6})}} className={style.label}/>
                         {errors.password && (
                             <div>
                                 {errors.password?.type === "required" && <span>This field is required</span> }
                                 {errors.password?.type === "minLength" && <span>*Debe tener al menos 6 caracteres</span> }
                             </div>)}
-                        <Button   disabled={loading} style={style.button} type="submit">
+
+                        <Button   disabled={loading} className={style.button} type="submit">
                             {loading && <Spinner animation="border" size="sm"/>}
                             Iniciar sesion
                         </Button>
@@ -93,10 +77,6 @@ function Login() {
                 </Form>
                 </Container>
             </div>
-
-
-    
-        
         </>
     );
 }
