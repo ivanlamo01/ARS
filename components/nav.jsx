@@ -4,15 +4,12 @@ import styles from "../modules/nav.module.css"
 import {useAuthContext} from '../Context/AuthContext';
 
 
+
 const links = [
   {
     label: 'Home',
     route: '/'
   }, 
-  {
-    label: 'Log In',
-    route: '/logIn'
-  },
   {
     label: 'Sign Up',
     route: '/signUp'
@@ -21,6 +18,7 @@ const links = [
 
 export default function Nav() {
   const {login,handleLogout,user} = useAuthContext()
+
 
     return (
         <header className={styles.header}>
@@ -34,6 +32,11 @@ export default function Nav() {
                       </Link>
                     </li>
                   ))}
+                  <li>
+                    <button className={styles.btn} >
+                      Login
+                    </button>
+                  </li>
                 </ul>
             </nav>
       </header>
