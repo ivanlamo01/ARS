@@ -10,14 +10,7 @@
     box-shadow: 0 0 30px rgba(0,0,0,.5);
     color:white;
     position: relative;
-    z-index: 1000;
-    
     justify-content: center;
     align-items: center;
 };
 
-.containerAfter{
-    max-width: 370px ;
-    margin-top:50px;
-    color:white;
-};

@@ -1,34 +1,40 @@
-import  Form from "react-bootstrap/Form"
+import Form from 'react-bootstrap/Form'
+import style from '../modules/input.module.css'
 
-const styles={
-    inputBox:{
-        display:"flex",
+const styles = {
+  inputBox: {
+    display: 'flex'
+  },
+  label: {
+    position: 'absolute',
+    marginTop: '10px'
+  },
+  input: {
+    marginTop: '10px',
+    width: '100%',
+    height: '100%',
+    background: 'transparent',
+    border: 'none',
+    outline: 'none',
+    ':focus~.label': {
+      top: '-5px'
     },
-    label:{
-        position: "absolute",
-        top: "50%",
-        left: "5px",
-        transform: "translateY(-50%)",
-    },
-    input:{
-        marginTop:"10px",
-        width:"100%",
-        height:"100%",
-        background:"transparent",
-        border:"none",
-        outline:"none",
+    ':valid~.label': {
+      top: '-5px'
     }
+
+  }
 }
 
-function Input({label, type="text",name,placeholder="",register}){
-    return(
-        <>
-            <Form.Group className="mb-3" controlId={name} style={styles.inputBox}>
-                <Form.Label>{label}</Form.Label>
-                <Form.Control style={styles.input} type={type}  placeholder={placeholder} {...register} />
-            </Form.Group>  
-        </>          
-    )
+function Input ({ label, type = 'text', name, placeholder = '', register }) {
+  return (
+    <>
+      <Form.Group className={style.inputBox} controlId={name} style={styles.inputBox}>
+        <Form.Label style={styles.label} className={style.label}>{label}</Form.Label>
+        <Form.Control className={style.input} style={styles.input} type={type} placeholder={placeholder} {...register} />
+      </Form.Group>
+    </>
+  )
 }
 
-export default Input;
+export default Input
