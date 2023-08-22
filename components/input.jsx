@@ -4,12 +4,7 @@ const styles={
     inputBox:{
         display:"flex",
     },
-    label:{
-        position: "absolute",
-        top: "50%",
-        left: "5px",
-        transform: "translateY(-50%)",
-    },
+
     input:{
         marginTop:"10px",
         width:"100%",
@@ -24,7 +19,7 @@ function Input({label, type="text",name,placeholder="",register}){
     return(
         <>
             <Form.Group className="mb-3" controlId={name} style={styles.inputBox}>
-                <Form.Label>{label}</Form.Label>
+                <Form.Label >{label}</Form.Label>
                 <Form.Control style={styles.input} type={type}  placeholder={placeholder} {...register} />
             </Form.Group>  
         </>          

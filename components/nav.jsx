@@ -18,6 +18,9 @@ const links = [
 
 export default function Nav() {
   const {login,handleLogout,user} = useAuthContext()
+  
+  const loginButton = document.getElementById('logform')
+
 
 
     return (
@@ -33,7 +36,7 @@ export default function Nav() {
                     </li>
                   ))}
                   <li>
-                    <button className={styles.btn} >
+                    <button className={styles.btn} onClick={} >
                       Login
                     </button>
                   </li>

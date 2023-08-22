@@ -1,5 +1,8 @@
-
+.logform{
+    display: none;
+}
 .container{
+    display: flex;
     max-width: 400px ;
     height: 440px;
     margin-top:50px;
@@ -11,9 +14,8 @@
     color:white;
     position: relative;
     z-index: 1000;
-    
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
 };
 
 .containerAfter{
