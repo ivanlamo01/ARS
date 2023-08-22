@@ -1,10 +1,16 @@
-import  Form from "react-bootstrap/Form"
+import Form from 'react-bootstrap/Form'
+import style from '../modules/input.module.css'
 
 const styles={
     inputBox:{
         display:"flex",
     },
-
+    label:{
+        position: "absolute",
+        top: "50%",
+        left: "5px",
+        transform: "translateY(-50%)",
+    },
     input:{
         marginTop:"10px",
         width:"100%",
@@ -26,4 +32,4 @@ function Input({label, type="text",name,placeholder="",register}){
     )
 }
 
-export default Input;
+export default Input

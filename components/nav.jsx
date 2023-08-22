@@ -36,7 +36,7 @@ export default function Nav() {
                     </li>
                   ))}
                   <li>
-                    <button className={styles.btn} onClick={} >
+                    <button className={styles.btn} >
                       Login
                     </button>
                   </li>

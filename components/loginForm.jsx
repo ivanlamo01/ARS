@@ -10,8 +10,6 @@ import { useAuthContext } from "../Context/AuthContext";
 import {Button, Spinner } from "react-bootstrap";
 import { login } from "../services/userServices";
 import { useRouter } from 'next/navigation'
-import style from "../modules/login.module.css"
-import { BorderBottom } from "react-bootstrap-icons";
 
 const styles ={
     button:{
@@ -30,10 +28,6 @@ const styles ={
         width: "100%" ,
         height:"50px",
         borderBottom:"2px solid #162938",
-    },
-    titulo:{
-        textAlign:"center",
-        color:"#162938"
     }
 }
 
@@ -53,7 +47,6 @@ function Login() {
                 setLoading(false)
                 handleLogin(user)
                 navigate.push("/")
-                
             }else{           
                 setLoading(false);
                 setAlert({variant:"danger", text: "Usuario o contraseña incorrectos"});
@@ -67,9 +60,10 @@ function Login() {
 
     return (
         <>
-            <div className={style.logform} id='logform'>
+        
+            <div className={style.logform}>
                 <Container className={style.container} id="cont">
-                    <h1 style={styles.titulo}>Login</h1>
+                    <h1 >Login</h1>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     
                     <div  style={styles.input}>
@@ -78,13 +72,13 @@ function Login() {
                                 <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
                                 </svg>
                         </span>
-                        <Input   type='email' placeholder="Email"  register={{...register("email", { required: true })}} style={{marginTop:"10px"}}/>
+                        <Input label="Email"  type='email'  register={{...register("email", { required: true })}} style={{marginTop:"10px"}}/>
                     </div>
 
-                    {errors.email && (
-                        <div>
-                            <span>This field is required</span>
-                        </div>)}
+            {errors.email && (
+              <div>
+                <span>This field is required</span>
+              </div>)}
 
 
                     <div  style={styles.input}>
@@ -93,26 +87,19 @@ function Login() {
                             <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
                             </svg>
                         </span>
-                        <Input placeholder="Password"  type='password'  register={{...register("password", { required: true })}} style={{marginTop:"10px"}}/>
+                        <Input label="Password"  type='password'  register={{...register("email", { required: true })}} style={{marginTop:"10px"}}/>
                     </div>
                     {errors.password && (
                         <div>
                             {errors.password?.type === "required" && <span>This field is required</span> }
                             {errors.password?.type === "minLength" && <span>*Debe tener al menos 6 caracteres</span> }
                         </div>)}
-                        <span>
-                            <input type="radio" />
-                            <label>Recordarme</label>
-                        </span>
+
                         <Button   disabled={loading} style={styles.button} type="submit">
                             {loading && <Spinner animation="border" size="sm"/>}
                             Iniciar sesion
                         </Button>
                         {alert && <Alert {...alert} />}
-
-                        <div>
-                            <span>No tenes una cuenta? </span>
-                        </div>
                 </Form>
                 </Container>
             </div>
@@ -120,5 +107,4 @@ function Login() {
     );
 }
 
-
-export default Login;
+export default Login

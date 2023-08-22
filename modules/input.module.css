@@ -1,0 +1,4 @@
+.inputBox input :focus~ .label,
+.inputBox .input :valid~ .label {
+    top:-5px
+}
